@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kaibun</title>
+    <script>
+        function kaibun(){
+            let line = document.getElementById("text").value;
+            let num = line.length;
+            let result = "";
+            for(let i=line.length-1 ; i>=0 ; i--){
+                result += line.charAt(i);
+            }
+            document.getElementById("result").textContent = result ;
+        }
+    </script>
+</head>
+<body>
+    <input id="text" value="おはようございます">
+    <button onclick="kaibun()">回文</button>
+    <p id="result"></p>
+    
+</body>
+</html>

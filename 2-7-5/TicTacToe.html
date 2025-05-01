@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #board{
+            background-color: black; 
+        }
+        td.cell{
+            background-color:white;
+            width:60px;
+            height:70px;
+            text-align:center;
+            font-size:2rem;
+        }
+    </style>
+    <script>
+        let inputText = ["〇","✖"];
+        let index = 0;
+        function init(){
+            let b = document.getElementById("board");
+            for(let i = 0;i<3;i++){
+                let tr = document.createElement("tr");
+                for(let j=0;j<3;j++){
+                    let td = document.createElement("td");
+                    td.className="cell";
+                    td.id = "cell" + i+j;
+                    td.onclick = clicked;
+                    tr.appendChild(td);
+                }
+                b.appendChild(tr);
+            }
+        }
+        function clicked(e){
+            let targetId = e.target.id;
+            document.getElementById(targetId).textContent = inputText[index];
+            index = ++index % inputText.length;
+            judge(e.target.id);
+        }
+
+        function judge(id){
+            document.getElementById("info").textContent = id + "判定";
+        }
+    </script>
+</head>
+<body onload="init()">
+    <table id="board"></table>
+    <h2 id="info"></h2>    
+</body>
+</html>
